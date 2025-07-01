@@ -1,0 +1,15 @@
+C:\Users\Asus\source\repos\StudentTask\StudentService\bin\Debug\net8.0\StudentTask.Services.deps.json
+C:\Users\Asus\source\repos\StudentTask\StudentService\bin\Debug\net8.0\StudentTask.Services.dll
+C:\Users\Asus\source\repos\StudentTask\StudentService\bin\Debug\net8.0\StudentTask.Services.pdb
+C:\Users\Asus\source\repos\StudentTask\StudentService\obj\Debug\net8.0\StudentTask.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Asus\source\repos\StudentTask\StudentService\obj\Debug\net8.0\StudentTask.Services.AssemblyInfoInputs.cache
+C:\Users\Asus\source\repos\StudentTask\StudentService\obj\Debug\net8.0\StudentTask.Services.AssemblyInfo.cs
+C:\Users\Asus\source\repos\StudentTask\StudentService\obj\Debug\net8.0\StudentTask.Services.csproj.CoreCompileInputs.cache
+C:\Users\Asus\source\repos\StudentTask\StudentService\obj\Debug\net8.0\StudentTask.Services.dll
+C:\Users\Asus\source\repos\StudentTask\StudentService\obj\Debug\net8.0\refint\StudentTask.Services.dll
+C:\Users\Asus\source\repos\StudentTask\StudentService\obj\Debug\net8.0\StudentTask.Services.pdb
+C:\Users\Asus\source\repos\StudentTask\StudentService\obj\Debug\net8.0\ref\StudentTask.Services.dll
+C:\Users\Asus\source\repos\StudentTask\StudentService\bin\Debug\net8.0\StudentTask.Database.dll
+C:\Users\Asus\source\repos\StudentTask\StudentService\bin\Debug\net8.0\StudentTask.Database.pdb
+C:\Users\Asus\source\repos\StudentTask\StudentService\obj\Debug\net8.0\StudentTask.Services.csproj.AssemblyReference.cache
+C:\Users\Asus\source\repos\StudentTask\StudentService\obj\Debug\net8.0\StudentT.A29D07D8.Up2Date

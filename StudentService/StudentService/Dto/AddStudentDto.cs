@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StudentTask.Services.StudentService.Dto
 {
-    public class AddStudentDto
+    public record AddStudentDto
     {
         [Required] 
         public string FullName { get; set; }

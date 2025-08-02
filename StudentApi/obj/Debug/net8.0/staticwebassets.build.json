@@ -1,11 +1,1 @@
-{
-  "Version": 1,
-  "Hash": "8/JBdCwJQBtltKdI454XxitH94v9QPzOXb8MHAb0mB8=",
-  "Source": "StudentTask.Api",
-  "BasePath": "_content/StudentTask.Api",
-  "Mode": "Default",
-  "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
-}
+{"Version":1,"Hash":"8fe+3C7aXk6wUTqzp3ywV3IyMA1tCngw9KiZo6YPGoM=","Source":"StudentTask.Api","BasePath":"_content/StudentTask.Api","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}

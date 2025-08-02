@@ -12,6 +12,7 @@ namespace StudentTask.Api
             builder.Services.AddServices();
             builder.Services.AddControllers();
             builder.Services.AddAutoMapper();
+            builder.Services.AddMemoryCache();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwagger();
 

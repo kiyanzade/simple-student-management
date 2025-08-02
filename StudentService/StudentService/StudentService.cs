@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using StudentTask.Database.Contexts;
 using StudentTask.Database.Entities;
 using StudentTask.Services.StudentService.Dto;
@@ -11,16 +12,30 @@ namespace StudentTask.Services.StudentService;
 
         private readonly StudentContext _dbContext;
         private readonly IMapper _mapper;
-        public StudentService(StudentContext dbContext, IMapper mapper)
+        private readonly IMemoryCache _cache;
+        public StudentService(StudentContext dbContext, IMapper mapper, IMemoryCache cache)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _cache = cache;
         }
 
         public async Task<IList<GetStudentDto>> GetAllStudents()
         {
-            var students = await _dbContext.Students.ToListAsync();
-            return students.Select(student => _mapper.Map<GetStudentDto>(student)).ToList();
+        if (!_cache.TryGetValue("students", out List<StudentModel>? students))
+        {
+              students = await _dbContext.Students.ToListAsync();
+            var cacheOptions = new MemoryCacheEntryOptions()
+                .SetSlidingExpiration(TimeSpan.FromSeconds(60))
+                .SetAbsoluteExpiration(TimeSpan.FromSeconds(300))
+                .SetPriority(CacheItemPriority.Normal);
+            _cache.Set("students", students, cacheOptions);
+
+        }
+       
+         // else cache hit
+            
+          return students.Select(student => _mapper.Map<GetStudentDto>(student)).ToList();
         }
 
         public async Task<GetStudentDto?> GetStudentById(int id)
@@ -36,8 +51,9 @@ namespace StudentTask.Services.StudentService;
             var existingStudent = await _dbContext.Students.FindAsync(id)?? throw new KeyNotFoundException($"There is no student with this Id {id}.");
             UpdateStudentFields(existingStudent, dto);
             await _dbContext.SaveChangesAsync();
+            _cache.Remove("students");
 
-            return _mapper.Map<GetStudentDto>(existingStudent);
+        return _mapper.Map<GetStudentDto>(existingStudent);
         }
 
         public async Task<GetStudentDto> AddStudent(AddStudentDto dto)
@@ -45,6 +61,8 @@ namespace StudentTask.Services.StudentService;
             var student = _mapper.Map<StudentModel>(dto);
             _dbContext.Students.Add(student);
             await _dbContext.SaveChangesAsync();
+
+            _cache.Remove("students");
 
             return _mapper.Map<GetStudentDto>(student);
         }
@@ -54,7 +72,9 @@ namespace StudentTask.Services.StudentService;
             var existingStudent = await _dbContext.Students.FindAsync(id)?? throw new KeyNotFoundException($"There is no student with this Id {id}.");
             _dbContext.Students.Remove(existingStudent);
             await _dbContext.SaveChangesAsync();
-        }
+
+             _cache.Remove("students");
+    }
 
         private void UpdateStudentFields(StudentModel existingStudent, EditStudentDto dto)
     {

@@ -11,6 +11,7 @@
           "AutoMapper": "14.0.0",
           "Microsoft.EntityFrameworkCore.Sqlite": "9.0.6",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.6",
+          "Microsoft.Extensions.Caching.Memory": "9.0.6",
           "StudentTask.Database": "1.0.0",
           "StudentTask.Services": "1.0.0",
           "Swashbuckle.AspNetCore": "6.4.0"
@@ -881,7 +882,10 @@
           "Microsoft.EntityFrameworkCore.Sqlite": "9.0.6"
         },
         "runtime": {
-          "StudentTask.Database.dll": {}
+          "StudentTask.Database.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "StudentTask.Services/1.0.0": {
@@ -890,7 +894,10 @@
           "StudentTask.Database": "1.0.0"
         },
         "runtime": {
-          "StudentTask.Services.dll": {}
+          "StudentTask.Services.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

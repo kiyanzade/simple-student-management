@@ -411,7 +411,10 @@
           "Microsoft.EntityFrameworkCore.Sqlite": "9.0.6"
         },
         "runtime": {
-          "StudentTask.Database.dll": {}
+          "StudentTask.Database.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

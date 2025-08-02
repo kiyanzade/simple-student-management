@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StudentTask.Services")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9b8b093bceb7becd2bd7d46043ad5951c259bb51")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c0c980ffa850af8c31b06bfbeb2e9e15d611eb5")]
 [assembly: System.Reflection.AssemblyProductAttribute("StudentTask.Services")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StudentTask.Services")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

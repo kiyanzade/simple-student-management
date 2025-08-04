@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using StackExchange.Redis;
 using StudentTask.Database.Contexts;
 using StudentTask.Database.Entities;
 using StudentTask.Services.StudentService;
@@ -28,6 +29,20 @@ namespace StudentTask.Api
                 config.CreateMap<StudentModel, EditStudentDto>();
                 config.CreateMap<AddStudentDto, StudentModel>();
 
+            });
+        }
+
+        public static void AddRedisChache(this IServiceCollection services, string configuration)
+        {
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = configuration;
+            
+                options.ConfigurationOptions = new ConfigurationOptions
+                {
+                    AbortOnConnectFail = true,
+                    EndPoints = { configuration }
+                };
             });
         }
 

@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using StudentTask.Database.Contexts;
 using StudentTask.Database.Entities;
 using StudentTask.Services.StudentService.Dto;
+using System.Text.Json;
 
 namespace StudentTask.Services.StudentService;
 
@@ -13,9 +15,9 @@ namespace StudentTask.Services.StudentService;
 
         private readonly StudentContext _dbContext;
         private readonly IMapper _mapper;
-        private readonly IMemoryCache _cache;
+        private readonly IDistributedCache _cache;
         private readonly  ILogger<StudentService> _logger;
-        public StudentService(StudentContext dbContext, IMapper mapper, IMemoryCache cache, ILogger<StudentService> logger) 
+        public StudentService(StudentContext dbContext, IMapper mapper, IDistributedCache cache, ILogger<StudentService> logger) 
         {
             _dbContext = dbContext;
             _mapper = mapper;
@@ -26,26 +28,31 @@ namespace StudentTask.Services.StudentService;
         public async Task<IList<GetStudentDto>> GetAllStudents()
         {
         _logger.LogInformation("fetching data for students: from cache.");
-        if (!_cache.TryGetValue("students", out List<StudentModel>? students))
-        {
-            _logger.LogInformation("cache miss. fetching data for students: from database.");
-              students = await _dbContext.Students.ToListAsync();
-            var cacheOptions = new MemoryCacheEntryOptions()
-                .SetSlidingExpiration(TimeSpan.FromSeconds(60))
-                .SetAbsoluteExpiration(TimeSpan.FromSeconds(300))
-                .SetPriority(CacheItemPriority.Normal);
-            _logger.LogInformation("setting data for students: to cache.");
-            _cache.Set("students", students, cacheOptions);
+        var cachedData = await _cache.GetStringAsync("students");
 
-        }
-
-        else
+        if (!string.IsNullOrEmpty(cachedData))
         {
             _logger.LogInformation("cache hit for key: students.");
+            var students = JsonSerializer.Deserialize<List<StudentModel>>(cachedData)!;
+            return students.Select(s => _mapper.Map<GetStudentDto>(s)).ToList();
         }
 
-           return students.Select(student => _mapper.Map<GetStudentDto>(student)).ToList();
-        }
+
+        _logger.LogInformation("cache miss. fetching from database.");
+        var studentList = await _dbContext.Students.ToListAsync();
+
+        var options = new DistributedCacheEntryOptions
+        {
+            AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(60),
+            SlidingExpiration = TimeSpan.FromMinutes(30)
+        };
+
+        var serializedData = JsonSerializer.Serialize(studentList);
+        await _cache.SetStringAsync("students", serializedData, options);
+
+
+        return studentList.Select(s => _mapper.Map<GetStudentDto>(s)).ToList();
+    }
 
         public async Task<GetStudentDto?> GetStudentById(int id)
         {

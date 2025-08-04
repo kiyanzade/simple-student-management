@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StudentTask.Client")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9b8b093bceb7becd2bd7d46043ad5951c259bb51")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16458e941994afdba976a2793c42195fc31e26c8")]
 [assembly: System.Reflection.AssemblyProductAttribute("StudentTask.Client")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StudentTask.Client")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

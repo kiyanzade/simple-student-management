@@ -328,3 +328,6 @@ C:\Users\sadeghkiyanzadeh\Source\Repos\simple-student-management\StudentApi\obj\
 C:\Users\sadeghkiyanzadeh\Source\Repos\simple-student-management\StudentApi\obj\Debug\net8.0\StudentTask.Api.pdb
 C:\Users\sadeghkiyanzadeh\Source\Repos\simple-student-management\StudentApi\obj\Debug\net8.0\StudentTask.Api.genruntimeconfig.cache
 C:\Users\sadeghkiyanzadeh\Source\Repos\simple-student-management\StudentApi\obj\Debug\net8.0\ref\StudentTask.Api.dll
+C:\Users\sadeghkiyanzadeh\Source\Repos\simple-student-management\StudentApi\bin\Debug\net8.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+C:\Users\sadeghkiyanzadeh\Source\Repos\simple-student-management\StudentApi\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+C:\Users\sadeghkiyanzadeh\Source\Repos\simple-student-management\StudentApi\bin\Debug\net8.0\StackExchange.Redis.dll

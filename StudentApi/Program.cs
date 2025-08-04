@@ -15,6 +15,7 @@ namespace StudentTask.Api
             builder.Services.AddMemoryCache();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwagger();
+            builder.Services.AddRedisChache("localhost");
 
             var app = builder.Build();
 
